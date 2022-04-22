@@ -18,6 +18,8 @@ UI는 스토리보드를 이용해 구현했습니다.
 
 4. 1RM 계산기 기능
 
+5. 다중언어를 지원합니다.
+
 ## 개발과정
 
 ### 타이머 기능
@@ -82,5 +84,18 @@ SendUpdatedelegate {
 
 ## 1RM 계산기 기능
 
+![Simulator Screen Recording - iPhone 13 - 2022-04-22 at 18 14 07](https://user-images.githubusercontent.com/93653997/164676606-8ee0daea-f4da-4145-a8d0-45c8649ffa49.gif)
+
 입력한 무게와 Reps를 바탕으로 여러 RM의 값을 구합니다.
+
+
+## 다중언어 지원
+
+![Simulator Screen Shot - iPhone 13 - 2022-04-22 at 18 19 50](https://user-images.githubusercontent.com/93653997/164677118-d89f330f-64ef-4826-8c44-c627188a01e5.png)
+
+
+![Simulator Screen Shot - iPhone 13 - 2022-04-22 at 18 21 14](https://user-images.githubusercontent.com/93653997/164677189-066f6528-0304-44ac-bb2d-711d3b2d3d5d.png)
+
+
+아이폰의 언어 설정 따라 영어와 한국어를 지원합니다.
 
