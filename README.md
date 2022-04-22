@@ -91,10 +91,10 @@ SendUpdatedelegate {
 
 ## 다중언어 지원
 
-![Simulator Screen Shot - iPhone 13 - 2022-04-22 at 18 19 50](https://user-images.githubusercontent.com/93653997/164677118-d89f330f-64ef-4826-8c44-c627188a01e5.png)
+![Simulator Screen Recording - iPhone 13 - 2022-04-22 at 18 25 41](https://user-images.githubusercontent.com/93653997/164678009-08e67f18-1f2f-4f3e-9797-eda3af86cb2d.gif)
 
 
-![Simulator Screen Shot - iPhone 13 - 2022-04-22 at 18 21 14](https://user-images.githubusercontent.com/93653997/164677189-066f6528-0304-44ac-bb2d-711d3b2d3d5d.png)
+![Simulator Screen Recording - iPhone 13 - 2022-04-22 at 18 27 06](https://user-images.githubusercontent.com/93653997/164678129-a79650de-7a8f-45e2-9a4b-b1b9bb114481.gif)
 
 
 아이폰의 언어 설정 따라 영어와 한국어를 지원합니다.
