@@ -33,6 +33,8 @@ UI는 스토리보드를 이용해 구현했습니다.
 
 
 ### 쉬는시간 종료 알람기능
+![Simulator Screen Recording - iPhone 13 - 2022-04-22 at 18 36 57](https://user-images.githubusercontent.com/93653997/164679970-79e32edb-0ad9-4090-a9e1-df65097ac35b.gif)
+
 
 쉬는시간이 종료되면 알람이 울리도록 설정하고 타이머 View에서 알람을 켜고 끌수 할수 있습니다.
 
