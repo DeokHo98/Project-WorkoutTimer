@@ -80,7 +80,7 @@ SendUpdatedelegate {
 }
 
 ```
-
+</details>
 
 ## 1RM 계산기 기능
 
