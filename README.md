@@ -32,6 +32,33 @@ UI는 스토리보드를 이용해 구현했습니다.
 
 
 
+### 쉬는시간 종료 알람기능
+
+쉬는시간이 종료되면 알람이 울리도록 설정하고 타이머 View에서 알람을 켜고 끌수 할수 있습니다.
+
+
+<details>
+<summary>코드보기</summary>
+
+소리 재생을 위한 코드 입니다.
+```swift
+    private func playSound() {
+        let url = Bundle.main.url(forResource: "sound", withExtension: "mp3")!
+        if soundBool {
+            do {
+                player = try AVAudioPlayer(contentsOf: url)
+                player?.play()
+            } catch {
+                print(error)
+            }
+        } else {
+            return
+        }
+    }
+
+```
+</details>
+
 
 ### 운동일지 기능
 ![Simulator Screen Recording - iPhone 13 - 2022-04-22 at 18 12 45](https://user-images.githubusercontent.com/93653997/164675965-3d617bdc-b3b6-4f50-bb88-5a32b5bded57.gif)
@@ -82,14 +109,14 @@ SendUpdatedelegate {
 ```
 </details>
 
-## 1RM 계산기 기능
+### 1RM 계산기 기능
 
 ![Simulator Screen Recording - iPhone 13 - 2022-04-22 at 18 14 07](https://user-images.githubusercontent.com/93653997/164676606-8ee0daea-f4da-4145-a8d0-45c8649ffa49.gif)
 
 입력한 무게와 Reps를 바탕으로 여러 RM의 값을 구합니다.
 
 
-## 다중언어 지원
+### 다중언어 지원
 
 ![Simulator Screen Recording - iPhone 13 - 2022-04-22 at 18 25 41](https://user-images.githubusercontent.com/93653997/164678009-08e67f18-1f2f-4f3e-9797-eda3af86cb2d.gif)
 
@@ -98,4 +125,45 @@ SendUpdatedelegate {
 
 
 아이폰의 언어 설정 따라 영어와 한국어를 지원합니다.
+
+
+## 심사과정
+1. 첫번째 리젝    
+앱스토어에 비슷한 타이머앱들이 너무 많이 있다고 스팸앱 판정을 받았습니다.   
+저의 앱은 헬스에 특화된 타이머라고 생각하고 만들었기 때문에   
+내가 만든앱이 많은 타이머 앱과 무엇이 다른지에 대해 자세히 설명을했습니다.   
+
+그 뒤에 심사에 통과 되고 앱을 출시했습니다.
+
+
+## 업데이트 과정
+1. 첫번째 업데이트     
+
+알람이 울리도록 하는 기능을 켰다 껏다 할수가 있는데
+매번 앱이 켜질때마다 버튼이 초기화되버리는 문제가 있었습니다.   
+그래서 UserDefault를 사용해 알람사용 유무 상태를 저장하기로 업데이트했습니다
+
+
+<details>
+<summary>코드보기</summary>
+
+
+
+```swift
+ @IBAction func playSoundButton(_ sender: Any) {
+        if soundButton.currentImage == UIImage(systemName: "bell") {
+            soundAlert(text: "Do you want to turn off the rest time finish sound?".localized()) { [self] in
+                UserDefaults.standard.set(false, forKey: "Sound")
+                soundBool = UserDefaults.standard.bool(forKey: "Sound")
+                soundButton.setImage(UIImage(systemName: "bell.slash"), for: .normal) }
+            } else {
+                soundAlert(text: "Do you want to turn on the rest time finish sound?".localized()) { [self] in
+                    UserDefaults.standard.set(true, forKey: "Sound")
+                    soundBool = UserDefaults.standard.bool(forKey: "Sound")
+                    soundButton.setImage(UIImage(systemName: "bell"), for: .normal)}
+            }
+        }
+```
+
+</details>
 
