@@ -14,6 +14,8 @@ class CalculatorViewController: UIViewController {
     @IBOutlet var repsLabel: [UILabel]!
     @IBOutlet var rmLabel: [UILabel]!
     
+    let rm = OneRM()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +53,7 @@ class CalculatorViewController: UIViewController {
                 } else if doubleReps > 20 {
                     errorAlert(message: "If there are too many reps, it is not accurate".localized())
                 } else {
-                    let oneRmNum = OneRM.calculator(weight: doubleWeight, reps: doubleReps)
+                    let oneRmNum = rm.calculator(weight: doubleWeight, reps: doubleReps)
                     rmLabelOn()
                     swichOneRm(num: oneRmNum)
                 }
@@ -64,7 +66,7 @@ class CalculatorViewController: UIViewController {
 
    private func swichOneRm(num: Double) {
         for item in 0...11 {
-            repsLabel[item].text = String(format: "%.1f", OneRM.percent(rm: item, num: num))
+            repsLabel[item].text = String(format: "%.1f", rm.percent(rm: item, num: num))
         }
     }
     
@@ -95,6 +97,8 @@ class CalculatorViewController: UIViewController {
 //MARK: - 다른뷰를 클릭시 키보드를 끄게하는 기능
 
 extension CalculatorViewController {
+    
+    
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(CalculatorViewController.dismissKeyboard))
         tap.cancelsTouchesInView = false

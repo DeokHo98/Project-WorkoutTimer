@@ -9,13 +9,13 @@ import Foundation
 import SwiftUI
 
 struct OneRM {
-    static func calculator(weight: Double, reps: Double) -> Double {
+     func calculator(weight: Double, reps: Double) -> Double {
         let result = weight * (36.0 / (37.0 - reps))
         return result
     }
     
     //전체값 X 퍼센트 ÷ 100
-    static func percent(rm: Int, num: Double) -> Double {
+     func percent(rm: Int, num: Double) -> Double {
         switch rm {
         case 0:
             return num

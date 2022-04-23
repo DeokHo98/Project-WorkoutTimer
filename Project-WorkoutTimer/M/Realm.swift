@@ -11,9 +11,6 @@ import RealmSwift
 class RealmSingleton {
     static let shared = RealmSingleton()
     let realm = try! Realm()
-    
-    
-    private init()  { }
 }
 
 

@@ -24,6 +24,8 @@ class TimerViewcontroller: UIViewController {
     @IBOutlet weak var finishButton: UIButton!
     @IBOutlet weak var soundButton: UIButton!
     
+    private var time = Time()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +45,7 @@ class TimerViewcontroller: UIViewController {
     
     //MARK: - Timer Code
     @IBAction func workOutStartButtonClick(_ sender: UIButton) {
-        if Time.totalRestTime == 0 {
+        if time.totalRestTime == 0 {
             startError()
         } else {
             if timer.timerCounting == false {
@@ -59,7 +61,7 @@ class TimerViewcontroller: UIViewController {
         startButtonSetfalse()
         textColorSetBlue()
         labelTextSetInResetButton()
-        setTime(time: Time.totalRestTime)
+        setTime(time: time.totalRestTime)
     }
     
     @IBAction func finishiButtonClick(_ sender: Any) {
@@ -130,15 +132,15 @@ extension TimerViewcontroller {
     }
     
     @objc private func resetUpdateTimer2() {
-        if Time.totalRestTime > 1 {
-            Time.totalRestTime -= 1
-            setTime(time: Time.totalRestTime)
+        if time.totalRestTime > 1 {
+            time.totalRestTime -= 1
+            setTime(time: time.totalRestTime)
         } else {
             setTime(time: 0)
             startButtonSetTrue()
             timer.mainTimer?.invalidate()
             workOutLabel.text = "Rest Time Finish".localized()
-            Time.totalRestTime = Time.duplicatedTotalRestTime
+            time.totalRestTime = time.duplicatedTotalRestTime
             textColorSetBlack()
             isHiddenFalseAndTrue(check: false, pickerView: minPickerView, pickerView2: secPikerView, label: restTimeSetting)
             playSound()
@@ -231,7 +233,7 @@ extension TimerViewcontroller {
     
     
     private func resetButtontimerSet() {
-        Time.setCount += 1
+        time.setCount += 1
         timer.timeCount = 0
         timer.timerCounting = false
         timer.mainTimer?.invalidate()
@@ -261,7 +263,7 @@ extension TimerViewcontroller {
     
     private func labelTextSetInResetButton() {
         timerLabel.text = makeTimerString(minuters: 0, seconds: 0)
-        setCountLabel.text = "\(Time.setCount)"+" Set complete".localized()
+        setCountLabel.text = "\(time.setCount)"+" Set complete".localized()
         workOutLabel.text = "Rest Time".localized()
     }
     
@@ -285,8 +287,8 @@ extension TimerViewcontroller {
         timer.timeCount = 0
         timer.mainTimer?.invalidate()
         timer.timerCounting = false
-        Time.setCount = 0
-        Time.totalRestTime = Time.duplicatedTotalRestTime
+        time.setCount = 0
+        time.totalRestTime = time.duplicatedTotalRestTime
     }
     
     private func finishButtonSetText() {
@@ -312,33 +314,33 @@ extension TimerViewcontroller: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView == minPickerView {
-            return Time.restTimeArrayMin.count
+            return time.restTimeArrayMin.count
         } else {
-            return Time.restTimeArraySec.count
+            return time.restTimeArraySec.count
             
         }
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == minPickerView {
-            Time.restTimeMin = row * 60
+            time.restTimeMin = row * 60
             insertTime()
         } else {
-            Time.restTimeSec = row
+            time.restTimeSec = row
             insertTime()
         }
     }
     
     private func insertTime() {
-        Time.totalRestTime = Time.restTimeMin + Time.restTimeSec
-        Time.duplicatedTotalRestTime = Time.restTimeMin + Time.restTimeSec
+        time.totalRestTime = time.restTimeMin + time.restTimeSec
+        time.duplicatedTotalRestTime = time.restTimeMin + time.restTimeSec
     }
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         if pickerView == minPickerView {
-            return pickerViewSetText(array: Time.restTimeArrayMin[row])
+            return pickerViewSetText(array: time.restTimeArrayMin[row])
         } else {
-            return pickerViewSetText(array: Time.restTimeArraySec[row])
+            return pickerViewSetText(array: time.restTimeArraySec[row])
         }
     }
     

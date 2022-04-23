@@ -9,9 +9,9 @@ import Foundation
 
 
 struct Time {
-    static var restTimeArrayMin: [String] = ["00","01","02","03","04","05","06","07","08","09","10"]
+     var restTimeArrayMin: [String] = ["00","01","02","03","04","05","06","07","08","09","10"]
     
-    static var restTimeArraySec: [String] {
+     var restTimeArraySec: [String] {
         var num = ["00","01","02","03","04","05","06","07","08","09"]
         for i in 10...60 {
             num.append(String(i))
@@ -19,19 +19,19 @@ struct Time {
         return num
     }
     
-    static var restTimeMin: Int = 0
+     var restTimeMin: Int = 0
     
-    static var restTimeSec: Int = 0
+     var restTimeSec: Int = 0
     
-    static var totalRestTime: Int = 0
+     var totalRestTime: Int = 0
     
-    static var duplicatedTotalRestTime: Int = 0
+     var duplicatedTotalRestTime: Int = 0
     
     var mainTimer: Timer?
     
     var timeCount: Int = 0
     
-    static var setCount: Int = 0
+     var setCount: Int = 0
     
     var timerCounting: Bool = false
 }
